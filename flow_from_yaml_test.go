@@ -7,7 +7,7 @@ func TestNewFromYAML(t *testing.T) {
 break_on_error: true
 
 steps:
-  - Name: hello world`
+  - name: hello world`
 
 	flow, err := NewFromYAML(yaml)
 	if err != nil {

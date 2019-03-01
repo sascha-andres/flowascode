@@ -11,7 +11,7 @@ func TestNewFromReader(t *testing.T) {
 break_on_error: true
 
 steps:
-  - Name: hello world`
+  - name: hello world`
 
 	flow, err := NewFromReader(strings.NewReader(yaml))
 	if err != nil {

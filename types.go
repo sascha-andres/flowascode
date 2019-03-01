@@ -9,7 +9,7 @@ type (
 
 	// Step is a single execution point in a flow
 	Step struct {
-		Name      string       // Name of a step, also used to reference from C(Descendant)
+		Name      string       `yaml:"name"` // Name of a step, also used to reference from C(Descendant)
 		Script    []string     // Script to execute
 		OnSuccess []Descendant // OnSuccess is a list of steps to execute if the script returns with 0
 		OnFailure []Descendant // OnFailure is a list of steps to execute if the scripts returns not a 0
