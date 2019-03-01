@@ -1,10 +1,10 @@
 package flowascode
 
-import yaml "github.com/go-yaml/yaml"
+import "github.com/go-yaml/yaml"
 
 // NewFromYAML takes a yaml string and creates a Flow object
-func NewFromYAML(yaml string) (*Flow, error) {
+func NewFromYAML(data string) (*Flow, error) {
 	var flow Flow
-	err := yaml.Unmarshal([]byte(yaml), &flow)
+	err := yaml.Unmarshal([]byte(data), &flow)
 	return &flow, err
 }
