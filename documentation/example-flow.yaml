@@ -1,0 +1,45 @@
+---
+
+break_on_error: false
+
+- name: default
+  on_success:
+    - name: second_step
+    - name: notify
+      variables:
+        RECEPIENT: demo@test.com
+        STEP: ${.Name}
+  on_failure:
+    - name: error_handler
+      variables:
+        RECEPIENT: demo@test.com
+  script:
+    - command a
+    - command b
+
+- name: notify
+  on_failure:
+    - name: error_handler
+      variables:
+        RECEPIENT: demo@test.com
+  script:
+    - |
+      cd directory
+      command c
+
+- name: second_step
+  on_success:
+    - name: notify
+      variables:
+        RECEPIENT: demo@test.com
+        STEP: ${.Name}
+  on_failure:
+    - name: error_handler
+      variables:
+        RECEPIENT: demo@test.com
+  script:
+    - command d
+
+- name: error_handler
+  script:
+    - command e
