@@ -2,7 +2,6 @@ package flowascode
 
 import (
 	"github.com/hashicorp/go-multierror"
-	"github.com/sirupsen/logrus"
 )
 
 const ErrMissingSuccessStep = Error("success step not defined")
@@ -11,9 +10,7 @@ const ErrMissingStep = Error("step not defined")
 
 // ValidateStep looks if a step could run successful
 func (f *Flow) ValidateStep(name string) error {
-	log := logrus.
-		WithField("package", "flowascode").
-		WithField("method", "ValidateStep")
+	log := logger.WithField("method", "ValidateStep")
 
 	log.Debugf("called with name := [%s]", name)
 
@@ -38,9 +35,7 @@ func (f *Flow) ValidateStep(name string) error {
 
 // validateStepExist checks if a step exists
 func (f *Flow) validateStepExist(name string) (*Step, error) {
-	log := logrus.
-		WithField("package", "flowascode").
-		WithField("method", "validateStepExist")
+	log := logger.WithField("method", "validateStepExist")
 
 	log.Debugf("called with name := [%s]", name)
 
@@ -60,9 +55,7 @@ func (f *Flow) validateStepExist(name string) (*Step, error) {
 // validateSuccess checks if all required steps on success
 // exist
 func (f *Flow) validateSuccess(step *Step) error {
-	log := logrus.
-		WithField("package", "flowascode").
-		WithField("method", "validateSuccess")
+	log := logger.WithField("method", "validateSuccess")
 
 	log.Debugf("called with step := [%s]", step)
 
@@ -82,9 +75,7 @@ func (f *Flow) validateSuccess(step *Step) error {
 // validateFailure checks if all required steps on failure
 // exist
 func (f *Flow) validateFailure(step *Step) error {
-	log := logrus.
-		WithField("package", "flowascode").
-		WithField("method", "validateFailure")
+	log := logger.WithField("method", "validateFailure")
 
 	log.Debugf("called with step := [%s]", step)
 

@@ -1,5 +1,7 @@
 package flowascode
 
+import "github.com/sirupsen/logrus"
+
 type (
 
 	// Error type for constant error definitions
@@ -30,4 +32,12 @@ type (
 	}
 )
 
+var (
+	logger *logrus.Entry
+)
+
 func (e Error) Error() string { return string(e) }
+
+func init() {
+	logger = logrus.WithField("package", "flowascode")
+}

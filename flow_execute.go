@@ -1,13 +1,9 @@
 package flowascode
 
-import "github.com/sirupsen/logrus"
-
 // Execute takes a step name and starts to execute from there
 // if no ma,e is given it tries to get the default namespace
 func (f *Flow) Execute(name string) error {
-	log := logrus.
-		WithField("package", "flowascode").
-		WithField("method", "Execute")
+	log := logger.WithField("method", "Execute")
 
 	log.Debugf("called with name := [%s]", name)
 
