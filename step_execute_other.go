@@ -6,7 +6,6 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"os"
 	"os/exec"
 	"strings"
@@ -24,33 +23,55 @@ func (s *Step) executeOS(pathToShell string) error {
 		return err
 	}
 
-	dir, err := ioutil.TempDir("", "flowascode")
+	temporaryFile, def, err := createTempFile()
+	if def != nil {
+		defer def()
+	}
 	if err != nil {
 		return err
 	}
-	defer func() {
+
+	if err := s.fillFile(temporaryFile); err != nil {
+		return err
+	}
+
+	return executeScript(shellCommand, temporaryFile.Name())
+}
+
+// createTempFile creates a temporary file in the temp directory
+func createTempFile() (*os.File, func(), error) {
+	dir, err := ioutil.TempDir("", "flowascode")
+	if err != nil {
+		return nil, nil, err
+	}
+
+	temporaryFile, err := ioutil.TempFile(dir, "example")
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return temporaryFile, func() {
 		err := os.RemoveAll(dir)
 		if err != nil {
 			fmt.Println(err)
 		}
+	}, nil
+}
 
-	}()
-
-	temporaryFile, err := ioutil.TempFile(dir, "example")
-	if err != nil {
-		log.Fatal(err)
-	}
-
+// fillFile writes the data to a file
+func (s *Step) fillFile(temporaryFile *os.File) error {
 	script := strings.Join(s.Script, "\n")
 	if _, err := temporaryFile.Write([]byte(script)); err != nil {
 		return err
 	}
-	err = temporaryFile.Close()
-	if err != nil {
-		return err
-	}
-	cmd := exec.Command(shellCommand, temporaryFile.Name())
-	err = cmd.Start()
+	err := temporaryFile.Close()
+	return err
+}
+
+// executeScript runs the created script
+func executeScript(shellCommand, temporaryFile string) error {
+	cmd := exec.Command(shellCommand, temporaryFile)
+	err := cmd.Start()
 	if err != nil {
 		return err
 	}
