@@ -1,0 +1,24 @@
+---
+
+shell: bash
+
+name: test flow document
+description: |
+  This is just a very simple test document for flowascode
+
+steps:
+  - name: test
+    on_success:
+      - name: succeed
+    on_failure:
+      - name: uuh
+    script:
+      - echo Hello world
+  - name: succeed
+    script:
+      - echo this was
+      - echo a success
+  - name: uuh
+    script:
+      - |
+        echo Unfortunately an error ocurred

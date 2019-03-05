@@ -32,7 +32,7 @@ func (f *Flow) Execute(name string) error {
 			_ = f.Execute(value.Name)
 		}
 	} else {
-		log.Info("step execution succeeded")
+		log.Infof("step execution succeeded: [%s]", step)
 		for _, value := range step.OnSuccess {
 			_ = f.Execute(value.Name)
 		}

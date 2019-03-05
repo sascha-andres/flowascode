@@ -75,6 +75,9 @@ func (s *Step) fillFile(temporaryFile *os.File) error {
 // executeScript runs the created script
 func executeScript(shellCommand, temporaryFile string) error {
 	cmd := exec.Command(shellCommand, temporaryFile)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	cmd.Stdin = os.Stdin
 	err := cmd.Start()
 	if err != nil {
 		return err

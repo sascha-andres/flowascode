@@ -41,3 +41,9 @@ func (e Error) Error() string { return string(e) }
 func init() {
 	logger = logrus.WithField("package", "flowascode")
 }
+
+// SetLogLevel can be used to adjust the log level
+func SetLogLevel(level logrus.Level) {
+	logrus.SetLevel(level)
+	logger = logrus.WithField("package", "flowascode")
+}
