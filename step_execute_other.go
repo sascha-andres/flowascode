@@ -5,6 +5,7 @@ package flowascode
 import (
 	"errors"
 	"fmt"
+	"github.com/sirupsen/logrus"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -13,6 +14,12 @@ import (
 
 // executeOS implementation for Linux
 func (s *Step) executeOS(pathToShell string) error {
+	log := logrus.
+		WithField("package", "flowascode").
+		WithField("method", "executeOS[other]")
+
+	log.Debugf("called with pathToShell := [%s]", pathToShell)
+
 	var (
 		shellCommand string
 		err          error
