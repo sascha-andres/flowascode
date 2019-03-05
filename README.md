@@ -20,3 +20,4 @@ _Remarks: the example document still communicates features not yet implemented_
 
 |Version|Description|
 |---|---|
+|0.1.0|initial minimal version|
