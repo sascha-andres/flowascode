@@ -9,11 +9,11 @@ type (
 
 	// Flow represents a complete flow
 	Flow struct {
-		BreakOnError bool   `yaml:"break_on_error"` // BreakOnError breaks if a script returns a non zero result
-		Name         string `yaml:"name"`           // Name is a name for the flow
-		Description  string `yaml:"description"`    // Description is a more descriptive text what the flow does
-		Steps        []Step `yaml:"steps"`          // Steps is the collection of steps in the flow
-		Shell        string `yaml:"shell"`          // Shell is the path or binary name for the shell to use to execute the script
+		// BreakOnError bool   `yaml:"break_on_error"` // BreakOnError breaks if a script returns a non zero result
+		Name        string `yaml:"name"`        // Name is a name for the flow
+		Description string `yaml:"description"` // Description is a more descriptive text what the flow does
+		Steps       []Step `yaml:"steps"`       // Steps is the collection of steps in the flow
+		Shell       string `yaml:"shell"`       // Shell is the path or binary name for the shell to use to execute the script
 	}
 
 	// Step is a single execution point in a flow
