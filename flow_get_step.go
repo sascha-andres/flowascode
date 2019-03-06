@@ -8,7 +8,7 @@ import (
 
 // GetStep returns the named step if found
 func (f *Flow) GetStep(name string) (*Step, error) {
-	log := logger.WithField("method", "GetStep")
+	log := logger.WithField("method", "*Flow.GetStep")
 
 	log.Debugf("called with name := [%s]", name)
 

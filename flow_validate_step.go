@@ -10,7 +10,7 @@ const ErrMissingStep = Error("step not defined")
 
 // ValidateStep looks if a step could run successful
 func (f *Flow) ValidateStep(name string) error {
-	log := logger.WithField("method", "ValidateStep")
+	log := logger.WithField("method", "*Flow.ValidateStep")
 
 	log.Debugf("called with name := [%s]", name)
 
@@ -35,7 +35,7 @@ func (f *Flow) ValidateStep(name string) error {
 
 // validateStepExist checks if a step exists
 func (f *Flow) validateStepExist(name string) (*Step, error) {
-	log := logger.WithField("method", "validateStepExist")
+	log := logger.WithField("method", "*Flow.validateStepExist")
 
 	log.Debugf("called with name := [%s]", name)
 
@@ -55,7 +55,7 @@ func (f *Flow) validateStepExist(name string) (*Step, error) {
 // validateSuccess checks if all required steps on success
 // exist
 func (f *Flow) validateSuccess(step *Step) error {
-	log := logger.WithField("method", "validateSuccess")
+	log := logger.WithField("method", "*Flow.validateSuccess")
 
 	log.Debugf("called with step := [%s]", step)
 
@@ -75,7 +75,7 @@ func (f *Flow) validateSuccess(step *Step) error {
 // validateFailure checks if all required steps on failure
 // exist
 func (f *Flow) validateFailure(step *Step) error {
-	log := logger.WithField("method", "validateFailure")
+	log := logger.WithField("method", "*Flow.validateFailure")
 
 	log.Debugf("called with step := [%s]", step)
 

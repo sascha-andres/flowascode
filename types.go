@@ -39,6 +39,7 @@ var (
 func (e Error) Error() string { return string(e) }
 
 func init() {
+	logrus.SetLevel(logrus.WarnLevel)
 	logger = logrus.WithField("package", "flowascode")
 }
 

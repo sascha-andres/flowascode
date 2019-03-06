@@ -6,7 +6,7 @@ import (
 
 // HasStep returns true in case the step exists
 func (f *Flow) HasStep(name string) bool {
-	log := logger.WithField("method", "HasStep")
+	log := logger.WithField("method", "*Flow.HasStep")
 
 	log.Debugf("called with name := [%s]", name)
 

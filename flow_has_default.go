@@ -4,7 +4,7 @@ package flowascode
 //
 // A default step gets executed when no step is defined
 func (f *Flow) HasDefault() bool {
-	log := logger.WithField("method", "HasDefault")
+	log := logger.WithField("method", "*Flow.HasDefault")
 
 	log.Debug("called")
 

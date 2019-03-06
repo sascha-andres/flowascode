@@ -46,7 +46,7 @@ func main() {
 		flowascode.SetLogLevel(logrus.DebugLevel)
 	}
 
-	err = flow.Execute(name)
+	err = flow.Execute(name, nil)
 	if err != nil {
 		log.Error(err)
 		os.Exit(1)

@@ -1,8 +1,8 @@
 package flowascode
 
 // executeOS implementation for Windows
-func (s *Step) executeOS(pathToShell string) error {
-	log := logger.WithField("method", "executeOS[windows]")
+func (s *Step) executeOS(pathToShell string, variables []string) error {
+	log := logger.WithField("method", "*Step.executeOS[windows]")
 
 	log.Debugf("called with pathToShell := [%s]", pathToShell)
 
