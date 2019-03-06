@@ -20,4 +20,7 @@ _Remarks: the example document still communicates features not yet implemented_
 
 |Version|Description|
 |---|---|
+|0.2.0|- support to pass variables to descendants|
+||- license and contributor information|
+||- integrated gops|
 |0.1.0|initial minimal version|
