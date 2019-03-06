@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/google/gops/agent"
 	"github.com/integrii/flaggy"
 	"github.com/sascha-andres/flowascode"
 	"github.com/sirupsen/logrus"
@@ -17,6 +18,10 @@ var (
 
 func main() {
 	log := logger.WithField("method", "main")
+
+	if err := agent.Listen(agent.Options{}); err != nil {
+		log.Fatal(err)
+	}
 
 	if err := validate(); err != nil {
 		log.Error(err)
