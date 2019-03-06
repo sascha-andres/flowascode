@@ -1,3 +1,16 @@
+// Copyright © 2019 Sascha Andres <sascha.andres@outlook.com>
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package flowascode
 
 import "github.com/sirupsen/logrus"
@@ -9,11 +22,11 @@ type (
 
 	// Flow represents a complete flow
 	Flow struct {
-		BreakOnError bool   `yaml:"break_on_error"` // BreakOnError breaks if a script returns a non zero result
-		Name         string `yaml:"name"`           // Name is a name for the flow
-		Description  string `yaml:"description"`    // Description is a more descriptive text what the flow does
-		Steps        []Step `yaml:"steps"`          // Steps is the collection of steps in the flow
-		Shell        string `yaml:"shell"`          // Shell is the path or binary name for the shell to use to execute the script
+		// BreakOnError bool   `yaml:"break_on_error"` // BreakOnError breaks if a script returns a non zero result
+		Name        string `yaml:"name"`        // Name is a name for the flow
+		Description string `yaml:"description"` // Description is a more descriptive text what the flow does
+		Steps       []Step `yaml:"steps"`       // Steps is the collection of steps in the flow
+		Shell       string `yaml:"shell"`       // Shell is the path or binary name for the shell to use to execute the script
 	}
 
 	// Step is a single execution point in a flow
@@ -39,6 +52,7 @@ var (
 func (e Error) Error() string { return string(e) }
 
 func init() {
+	logrus.SetLevel(logrus.WarnLevel)
 	logger = logrus.WithField("package", "flowascode")
 }
 

@@ -10,6 +10,8 @@ steps:
   - name: test
     on_success:
       - name: succeed
+        variables:
+          MESSAGE: success!
     on_failure:
       - name: uuh
     script:
@@ -17,7 +19,7 @@ steps:
   - name: succeed
     script:
       - echo this was
-      - echo a success
+      - echo a ${MESSAGE}
   - name: uuh
     script:
       - |
