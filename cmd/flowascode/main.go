@@ -23,10 +23,10 @@ import (
 )
 
 var (
-	flow   string
-	name   string
-	debug  bool
-	logger *logrus.Entry
+	flow     string
+	name     string
+	logLevel string
+	logger   *logrus.Entry
 )
 
 func main() {
@@ -60,8 +60,8 @@ func main() {
 		os.Exit(1)
 	}
 
-	if debug {
-		flowascode.SetLogLevel(logrus.DebugLevel)
+	if "" != logLevel {
+		flowascode.SetLogLevel(getLogLevel())
 	}
 
 	err = flow.Execute(name, nil)
@@ -81,6 +81,9 @@ func validate() error {
 	if "" == strings.Trim(flow, " ") {
 		return flowascode.Error("no flow file name provided")
 	}
+	if !(logLevel == "" || logLevel == "debug" || logLevel == "info" || logLevel == "warn" || logLevel == "error") {
+		return flowascode.Error("log-level must one of debug, info, warn or error")
+	}
 	return nil
 }
 
@@ -89,9 +92,24 @@ func validate() error {
 func init() {
 	logger = logrus.WithField("package", "main")
 
-	flaggy.Bool(&debug, "d", "debug", "turn on debug logging")
+	flaggy.String(&logLevel, "l", "log-level", "Choose one of debug, info, warn or error")
 	flaggy.String(&flow, "f", "flow", "provide path to flow definition")
 	flaggy.String(&name, "n", "name", "name of step to execute")
 
 	flaggy.Parse()
+}
+
+// getLogLevel translates the log-level parameter to specific values
+func getLogLevel() logrus.Level {
+	switch logLevel {
+	case "debug":
+		return logrus.DebugLevel
+	case "info":
+		return logrus.InfoLevel
+	case "warn":
+		return logrus.WarnLevel
+	case "error":
+		return logrus.ErrorLevel
+	}
+	return logrus.InfoLevel
 }
