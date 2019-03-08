@@ -67,7 +67,7 @@ func getEnvWithVariables(variables map[string]string) []string {
 	}
 	environmentVariables := os.Environ()
 	for key, value := range variables {
-		environmentVariables = append(environmentVariables, fmt.Sprintf("%s=%s", key, value))
+		environmentVariables = append(environmentVariables, fmt.Sprintf("%s=%s", key, os.ExpandEnv(value)))
 	}
 	return environmentVariables
 }

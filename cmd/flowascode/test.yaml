@@ -11,7 +11,7 @@ steps:
     on_success:
       - name: succeed
         variables:
-          MESSAGE: success!
+          MESSAGE: $USER !
     on_failure:
       - name: uuh
     script:
@@ -19,7 +19,7 @@ steps:
   - name: succeed
     script:
       - echo this was
-      - echo a ${MESSAGE}
+      - echo from ${MESSAGE}
   - name: uuh
     script:
       - |
