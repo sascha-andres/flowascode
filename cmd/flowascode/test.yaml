@@ -12,14 +12,15 @@ steps:
       - name: succeed
         variables:
           MESSAGE: $USER !
+          DESC: "{{.Flow.Description}}"
     on_failure:
       - name: uuh
     script:
       - echo Hello world
   - name: succeed
     script:
-      - echo this was
-      - echo from ${MESSAGE}
+      - echo this was from ${MESSAGE}
+      - echo ${DESC}
   - name: uuh
     script:
       - |
