@@ -12,9 +12,9 @@ _Remarks: the example document still communicates features not yet implemented_
     flow-as-code --flow <flow.yaml> --name <test> [--debug]
     
     
-    --flow  path to the file containing the flow definition
-    --name  name of the step to execute (entrypoint)
-    --debug Start printing debug messages
+    --flow      path to the file containing the flow definition
+    --name      name of the step to execute (entrypoint)
+    --log-level set log level (one of debug, info, warn or error[default])
 
 ### Configuration
 
@@ -64,6 +64,9 @@ Also you can access the flow and the current step like this:
 
 |Version|Description|
 |---|---|
+|0.3.0|- support for templated variables|
+||- add --log-level parameter|
+||- make use of dependabot|
 |0.2.0|- support to pass variables to descendants|
 ||- license and contributor information|
 ||- integrated gops|
