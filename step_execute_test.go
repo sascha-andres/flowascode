@@ -15,7 +15,7 @@ steps:
 		t.Fail()
 	}
 
-	err = flow.Steps[0].Execute("")
+	err = flow.Steps[0].Execute("", nil)
 	if err == nil {
 		t.Log("expected error, got none")
 		t.Fail()
@@ -41,7 +41,7 @@ steps:
 		t.Fail()
 	}
 
-	err = flow.Steps[0].Execute("")
+	err = flow.Steps[0].Execute("", nil)
 	if err == nil {
 		t.Log("expected error, got none")
 		t.Fail()
@@ -69,7 +69,7 @@ steps:
 		t.Fail()
 	}
 
-	err = flow.Steps[0].Execute(flow.Shell)
+	err = flow.Steps[0].Execute(flow.Shell, nil)
 	if err != nil {
 		t.Logf("expected no error, got [%s]", err)
 		t.Fail()

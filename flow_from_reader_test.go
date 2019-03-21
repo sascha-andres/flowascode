@@ -19,11 +19,6 @@ steps:
 		t.Fail()
 	}
 
-	if flow.BreakOnError != true {
-		t.Log("expected break on error to be true, received false")
-		t.Fail()
-	}
-
 	if len(flow.Steps) != 1 {
 		t.Logf("expected one step, got: %d", len(flow.Steps))
 		t.Fail()
