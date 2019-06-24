@@ -1,5 +1,7 @@
 # flow as code
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/sascha-andres/flowascode)](https://goreportcard.com/report/github.com/sascha-andres/flowascode)
+
 create a flow as code (in YAML format) is a utility that executes
 workflows based on a yaml configuration you pass in.
 
